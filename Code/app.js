@@ -6,8 +6,10 @@ const dotEnv = require("dotenv");
 const bodyParser = require("body-parser");
 const Joi = require("joi");
 const { Auth } = require("two-step-auth");
+const fs = require("fs");
 
 dotEnv.config({ path: "./config/config" });
+dotEnv.config({ path: "./config/serverResponse" });
 
 //middleware
 app.use(express.static("public"));
@@ -29,15 +31,14 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-//   console.log("helloww");
+  //   console.log("helloww");
   res.sendFile(__dirname + "/public/index.html");
 });
 
 let signUp = false;
 let otp;
 app.post("/signup.html", (req, res) => {
-
-    const { email, inputOTP } = req.body;
+  const { email, inputOTP } = req.body;
 
   // lets validate it using joi
 
@@ -50,13 +51,18 @@ app.post("/signup.html", (req, res) => {
     if (inputOTP) {
       if (otp == inputOTP) {
         console.log("good");
+        fs.writeFile("./config/serverResponse.env", "true", (err) => {
+          if (err) console.log(err);
+          else {
+            console.log("File written successfully\n");
+          }
+        });
         // res.send("SignUp successfull");
         // signUp = true;
       } else {
         console.log("Not good");
       }
     } else {
-    
       const { error, value } = schema.validate({ email });
 
       const sendOTP = async (value) => {
@@ -74,4 +80,3 @@ app.post("/signup.html", (req, res) => {
   }
   res.redirect("/signup.html");
 });
-
