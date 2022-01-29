@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
   <title>Signup</title>
 </head>
 
@@ -22,12 +22,14 @@
     </section>
 
     <section class="form-container">
-      <form class='form' action="/" method="POST" autocomplete="off">
+      <form class='form' action="/signup.html" method="POST" autocomplete="off">
         <input type="email" name="email" class="email" placeholder="Email" />
         <button type="submit" class='btn' >Get OTP</button>
       </form>
-      <input type="tel" maxLength=6 placeholder="_ _ _ _ _ _" name="password" class="password" />
-      <a type="submit" href='/' class='btn btn-p' >Next</a>
+      <form action="/signup.html" method="post">
+      <input type="tel" maxLength=6 placeholder="_ _ _ _ _ _" name="inputOTP" class="password" />
+        <button type="submit" class="btn btn-p">Next</button>
+    </form>
     </section>
     <div class="img-container">
       <img src="./MainLogo.png" alt="" / width='100%'>
