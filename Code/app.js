@@ -29,47 +29,44 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  console.log("helloww");
+//   console.log("helloww");
   res.sendFile(__dirname + "/public/index.html");
 });
 
-let storedMail;
+let signUp = false;
+let otp;
 app.post("/signup.html", (req, res) => {
-  console.log(req.body)
-  const { email, inputOTP } = req.body;
-//   console.log(email);
+
+    const { email, inputOTP } = req.body;
 
   // lets validate it using joi
-  
+
   const schema = Joi.object({
     email: Joi.string().email({
       minDomainSegments: 2,
     }),
   });
   try {
-    const { error, value } = schema.validate({ email });
-    console.log(value.email)
-    // let errorMsg = error.details[0].message;
-    console.log(error);
-    // if (error) {
-    //   console.log("some error")
-    //   }else{
-        let otp;
-        const sendOTP = async (value) => {
-            const res = await Auth(value, "ChatApp");
-            console.log(res);
-            // console.log(res.mail, res.OTP, res.success);
-            otp = res.OTP;
-        };
+    if (inputOTP) {
+      if (otp == inputOTP) {
+        console.log("good");
+        // res.send("SignUp successfull");
+        // signUp = true;
+      } else {
+        console.log("Not good");
+      }
+    } else {
+    
+      const { error, value } = schema.validate({ email });
 
-        sendOTP(value.email)
-        if(inputOTP){
-            // console.log(inputOTP)
-            console.log(otp)
-            if(otp == inputOTP){
-                console.log("good")
-            }
-        }
+      const sendOTP = async (value) => {
+        const res = await Auth(value, "ChatApp");
+        console.log(res);
+        otp = res.OTP;
+      };
+
+      sendOTP(value.email);
+    }
 
     // }
   } catch (err) {
@@ -77,3 +74,4 @@ app.post("/signup.html", (req, res) => {
   }
   res.redirect("/signup.html");
 });
+
