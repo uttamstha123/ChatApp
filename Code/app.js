@@ -35,6 +35,14 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+// remove data
+fs.writeFile(__dirname + "/public/serverResponse.env", "", (err) => {
+  if (err) console.log(err);
+  else {
+    console.log("File written successfully\n");
+  }
+});
+
 let signUp = false;
 let otp;
 app.post("/signup.html", (req, res) => {
@@ -51,12 +59,17 @@ app.post("/signup.html", (req, res) => {
     if (inputOTP) {
       if (otp == inputOTP) {
         console.log("good");
-        fs.writeFile("./config/serverResponse.env", "true", (err) => {
-          if (err) console.log(err);
-          else {
-            console.log("File written successfully\n");
+        fs.writeFile(
+          __dirname + "/public/serverResponse.env",
+          "true",
+          (err) => {
+            if (err) console.log(err);
+            else {
+              console.log("File written successfully\n");
+            }
           }
-        });
+        );
+
         // res.send("SignUp successfull");
         // signUp = true;
       } else {
@@ -79,4 +92,8 @@ app.post("/signup.html", (req, res) => {
     console.log(err);
   }
   res.redirect("/signup.html");
+});
+
+app.get("/userDetails.html", (req, res) => {
+  res.redirect(__dirname + "public/userDetails.html");
 });
