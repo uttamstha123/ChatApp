@@ -20,13 +20,14 @@
     </section>
 
     <section class="form-container">
-      <form action="./signup.html" class='form' method="POST" autocomplete="off">
+      <form action="./signup.html" class="form" method="POST" autocomplete="on">
         <input type="email" name="email" class="email" placeholder="Email" />
-        <button type="submit" class='btn'>Get OTP</button>
+        <button type="submit" class="btn">Get OTP</button>
       </form>
-      <form method="POST">
-        <input type="tel" maxLength=6 placeholder="_ _ _ _ _ _" name="inputOTP" class="password" />
-        <button type="submit" class="btn ">Next</button>
+      <form autocomplete="off" method="POST">
+        <input oninput="verifyOTP(this.value)" type="tel" maxlength="6" placeholder="_ _ _ _ _ _" name="inputOTP"
+          class="password" />
+        <button type="submit" class="btn next">Next</button>
       </form>
 
       <a href="#" class="btn btn-p continue">Continue</a>

@@ -74,6 +74,16 @@ app.post("/signup.html", (req, res) => {
         // signUp = true;
       } else {
         console.log("Not good");
+        fs.writeFile(
+          __dirname + "/public/serverResponse.env",
+          "false",
+          (err) => {
+            if (err) console.log(err);
+            else {
+              console.log("File written successfully\n");
+            }
+          }
+        );
       }
     } else {
       const { error, value } = schema.validate({ email });
