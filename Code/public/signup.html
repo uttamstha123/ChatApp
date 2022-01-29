@@ -12,35 +12,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <title>Login</title>
+  <title>Signup</title>
 </head>
 
-<body>
+<body >
   <div class="grid-container">
     <section class="heading-text">
       <h1>A new way to connect with your favourite people</h1>
     </section>
 
     <section class="form-container">
-      <form action="/" method="GET">
-        <input type="email" name="email" class="email" placeholder="Email or Username" />
-        <input type="password" placeholder="Password" name="password" class="password" />
-        <a href="/" class="reset">Forgot Password ?</a>
-        <button type="submit" id="login">Login</button>
+      <form class='form' action="/" method="POST" autocomplete="off">
+        <input type="email" name="email" class="email" placeholder="Email" />
+        <button type="submit" class='btn' >Get OTP</button>
       </form>
-      <div class="signup">
-        <div class="divider">
-          <span class="line">&nbsp;</span>
-          <span>OR</span>
-          <span class="line">&nbsp;</span>
-        </div>
-        <a href="./signup.html" id="signup">SignUp</a>
-      </div>
+      <input type="tel" maxLength=6 placeholder="_ _ _ _ _ _" name="password" class="password" />
+      <a type="submit" href='/' class='btn btn-p' >Next</a>
     </section>
     <div class="img-container">
       <img src="./MainLogo.png" alt="" / width='100%'>
     </div>
-  </div>
+    </div>
 </body>
 
 </html>
