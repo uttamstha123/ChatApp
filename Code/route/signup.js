@@ -2,11 +2,16 @@ const route = require("express").Router();
 const fs = require("fs");
 const { Auth } = require("two-step-auth");
 const Joi = require("joi");
+const User = require("../model/User");
+// const mongoose = require("mongoose");
 
 // remove data
-
+route.get("/", (req, res) => {
+  res.render("signup");
+});
+let mail;
 let otp;
-route.post("/", (req, res) => {
+route.post("/", async (req, res) => {
   const { email, inputOTP } = req.body;
 
   // lets validate it using joi
@@ -31,6 +36,19 @@ route.post("/", (req, res) => {
             }
           }
         );
+        // save to db
+        // saveEmail(email);
+        const user = new User({
+          email: mail,
+        });
+        await user.save((err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(result);
+          }
+        });
+        // res.send(user);
 
         // res.send("SignUp successfull");
         // signUp = true;
@@ -48,23 +66,35 @@ route.post("/", (req, res) => {
           }
         );
       }
-    } else {
+    } else if (email) {
       const { error, value } = schema.validate({ email });
+      if (!error) {
+        const sendOTP = async (value) => {
+          const res = await Auth(value, "ChatApp");
+          console.log(res);
+          otp = res.OTP;
+        };
+        sendOTP(value.email);
+      } else {
+        let errorMsg = "Invalid Email";
+        // console.log();
+        return res.status(504).render("signup", {
+          place: errorMsg,
+        });
+      }
 
-      const sendOTP = async (value) => {
-        const res = await Auth(value, "ChatApp");
-        console.log(res);
-        otp = res.OTP;
-      };
-
-      sendOTP(value.email);
+      mail = email;
     }
-
-    // }
   } catch (err) {
     console.log(err);
   }
-  res.redirect("/signup.html");
+  res.render("signup", {
+    email: mail,
+    inputOtp: inputOTP,
+  });
 });
 
+// async function saveEmail(email) {
+
+// }
 module.exports = route;
