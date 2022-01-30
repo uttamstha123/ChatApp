@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./styles/style.css" />
-  <title>Signup</title>
-</head>
-
-<body>
   <div class="grid-container">
     <section class="heading-text">
       <h1>A new way to connect with your favourite people</h1>
     </section>
 
     <section class="form-container">
-      <form action="./signup.html" class="form" method="POST" autocomplete="on">
+      <form action="./signup" class="form" method="POST" autocomplete="on">
         {{#if place}}
         <input type="email" name="email" class="email" placeholder="Invalid Email" >
         
@@ -46,6 +30,3 @@
     </div>
   </div>
   <script src="./js/clientSide.js"></script>
-</body>
-
-</html>

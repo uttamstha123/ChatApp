@@ -8,7 +8,7 @@ const fs = require("fs");
 const hbs = require("express-handlebars");
 
 // router
-const userDetailsRoute = require('./route/userdetails')
+// const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
 // configuration
 dotEnv.config({ path: "./config/config" });
@@ -33,8 +33,8 @@ app.use(bodyParser.urlencoded({ extended: false })); //parses form inputted valu
 app.use(bodyParser.json()); //parsing json
 
 // routes
-app.use("/signup.html", signupRoute);
-app.use('/userDetails.html',userDetailsRoute)
+app.use("/signup", signupRoute);
+// app.use('/userDetails.html',userDetailsRoute)
 
 mongo
   .connect(
@@ -61,7 +61,9 @@ app.get("/", (req, res) => {
   // res.sendFile(__dirname + "/public/index.html");
 
   // let's render the template
-  res.render("index");
+  res.render("index",{
+    page:'Login'
+  });
 });
 
 
