@@ -4,10 +4,12 @@ const path = require("path");
 const mongo = require("mongoose");
 const dotEnv = require("dotenv");
 const bodyParser = require("body-parser");
-const route = require("./route/signup");
 const fs = require("fs");
 const hbs = require("express-handlebars");
 
+// router
+const userDetailsRoute = require('./route/userdetails')
+const signupRoute = require("./route/signup");
 // configuration
 dotEnv.config({ path: "./config/config" });
 dotEnv.config({ path: "./config/serverResponse" });
@@ -29,15 +31,19 @@ app.engine(
 //middlewares
 app.use(bodyParser.urlencoded({ extended: false })); //parses form inputted value
 app.use(bodyParser.json()); //parsing json
-app.use("/signup.html", route);
+
+// routes
+app.use("/signup.html", signupRoute);
+app.use('/userDetails.html',userDetailsRoute)
+
 // mongo
-//   .connect(
-//     "mongodb+srv://event618horizon:After%40123glow@cluster0.8evbz.mongodb.net/SignUp?retryWrites=true&w=majority",
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => {
-//     console.log("Database connected successfully...");
-//   });
+  .connect(
+    "mongodb+srv://event618horizon:After%40123glow@cluster0.8evbz.mongodb.net/SignUp?retryWrites=true&w=majority",
+    { useNewUrlParser: true }
+  )
+  .then(() => {
+    console.log("Database connected successfully...");
+  });
 const PORT = dotEnv.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server is on the track...");
@@ -58,6 +64,4 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/userDetails.html", (req, res) => {
-  res.render('./userDetails')
-});
+
