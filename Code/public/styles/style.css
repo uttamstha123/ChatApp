@@ -146,6 +146,15 @@ a {
 .heading-text h1 {
   z-index: 10;
 }
+.header {
+  height: 100%;
+  z-index: 3;
+}
+.heading-text h3 {
+  font-size: 2.5rem;
+  color: var(--white-text-100);
+
+}
 
 .form-container {
   width: inherit;
@@ -154,9 +163,27 @@ a {
   display: flex;
   flex-direction: column;
   background: var(--primary-clr);
-  padding: 10rem 2rem 0 2rem;
+  padding: 10rem 2rem 0rem 2rem;
   gap: 1.5rem;
 }
+.final-form-container {
+  padding: 3rem 2rem;
+}
+
+.final-form > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+select, option {
+  padding: 1rem;
+
+  font-size: 1.8rem;
+  outline: none;
+  border: none;
+  border-radius: 0.8rem;
+  color: black;
+}
+
 
 .form-container form {
   width: 100%;
@@ -224,6 +251,9 @@ form .reset {
 }
 .sent-btn {
   color: var(--primary-clr);
+}
+.final-btn {
+  padding: 1.5rem 2.5rem; 
 }
 
 input:last-child {
