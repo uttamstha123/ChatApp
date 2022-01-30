@@ -5,21 +5,29 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const userDetails = UserDetails({
+  const {password, confirm} = req.body;
+  const userDetails = new UserDetails({
     fullName: req.body.name,
     password1: req.body.password,
     password2: req.body.confirm,
     gender: req.body.gender,
     bio: req.body.bio,
   });
+  if (password == confirm) {
+    await userDetails.save((err, result) => {
+      if (err) {
+        console.log(err);
+        return res.status(504).render("userDetails");
+      } else {
+        res.status(200).send(result);
+      }
+    });
+  }
+  else {
+    res.render("userDetails", {
+      fail: true
+    })
+  }
 
-  await userDetails.save((err, result) => {
-    if (err) {
-      console.log(err);
-      return res.status(504).render("userDetails");
-    } else {
-      res.status(200).send(result);
-    }
-  });
 });
 module.exports = router;
