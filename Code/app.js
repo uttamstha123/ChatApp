@@ -55,9 +55,7 @@ app.get("/", (req, res) => {
   // res.sendFile(__dirname + "/public/index.html");
 
   // let's render the template
-  res.render("index", {
-    email: "yondumi",
-  });
+  res.render("index");
 });
 
 app.get("/userDetails.html", (req, res) => {});
