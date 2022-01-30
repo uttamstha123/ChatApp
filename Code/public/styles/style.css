@@ -222,6 +222,9 @@ form .reset {
   cursor: pointer;
   z-index: 10;
 }
+.sent-btn {
+  color: var(--primary-clr);
+}
 
 input:last-child {
   text-align: center;

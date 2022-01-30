@@ -27,7 +27,11 @@
         {{else}}
         <input type="email" name="email" class="email" placeholder="Email" value={{email}}>
         {{/if}}
+        {{#if email}}
+        <button type="submit" class="btn sent-btn">OTP Sent</button>
+        {{else}}
         <button type="submit" class="btn">Get OTP</button>
+        {{/if}}
       </form>
       <form autocomplete="off" method="POST">
         <input oninput="verifyOTP(this.value)" type="tel" maxlength="6" placeholder="_ _ _ _ _ _" name="inputOTP" value = "{{inputOtp}}"
