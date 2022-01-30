@@ -36,7 +36,7 @@ app.use(bodyParser.json()); //parsing json
 app.use("/signup.html", signupRoute);
 app.use('/userDetails.html',userDetailsRoute)
 
-// mongo
+mongo
   .connect(
     "mongodb+srv://event618horizon:After%40123glow@cluster0.8evbz.mongodb.net/SignUp?retryWrites=true&w=majority",
     { useNewUrlParser: true }

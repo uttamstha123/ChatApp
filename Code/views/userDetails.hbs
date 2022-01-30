@@ -19,6 +19,9 @@
       </div>
       <div class="form-container final-form-container">
         <form action="" method="post" class="final-form">
+        {{#if fail}}
+        <p style="color: rgb(199, 34, 34); font-size: 2rem">Both passwords should match</p>
+        {{/if}}
           <input type="text" name='name' placeholder="Full Name" required />
           <input type="password" name='password' placeholder="Create Password" required />
           <input type="text" name='confirm' placeholder="Re-Enter Password" required />
