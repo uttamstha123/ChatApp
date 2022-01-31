@@ -4,12 +4,13 @@
   </section>
 
   <section class="form-container">
-      {{#if alreadySignUp}}
-      <a href='/' class='registered-msg'>Email is already register</a>
-      {{/if}}
+    {{#if alreadySignUp}}
+    <p style='color: #c53554' class='registered-msg'>Email is already registered <a href="/"
+        style='text-decoration: underline; margin-left: 1rem;color: rgb(46, 105, 192); font-size: 1.8rem;'>Login</a></p>
+    {{/if}}
     <form class="form" method="POST" autocomplete="on">
       {{#if place}}
-      <input type="email" name="email" class="email" placeholder="Invalid Email" >
+      <input type="email" name="email" class="email" placeholder="Invalid Email">
       {{else}}
       <input type="email" name="email" class="email" placeholder="Email" value={{email}} >
       {{/if}}

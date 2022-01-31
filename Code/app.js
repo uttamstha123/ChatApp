@@ -6,10 +6,12 @@ const dotEnv = require("dotenv");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const hbs = require("express-handlebars");
+const UserDetails = require("./model/UserDetails");
 
 // router
 // const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
+const { profile } = require("console");
 
 // configuration
 dotEnv.config({ path: "./config/config" });
@@ -58,11 +60,22 @@ fs.writeFile(__dirname + "/public/serverResponse.env", "", (err) => {
 });
 
 app.get("/", (req, res) => {
-  //   console.log("helloww");
-  // res.sendFile(__dirname + "/public/index.html");
-
   // let's render the template
   res.render("index", {
     page: "Login",
   });
 });
+
+app.post("/", async (req, res) => {
+  const { email, password } = req.body;
+  if (email.length && password.length) {
+    const userLogin = await UserDetails.find({ email: email });
+    if (password == userLogin[0].password1) {
+      return res.render('index')
+    }
+  }
+    res.render("index", {
+      incorrectLogin: true,
+    });
+  }
+);

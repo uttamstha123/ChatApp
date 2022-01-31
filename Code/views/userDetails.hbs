@@ -10,7 +10,7 @@
     >Enter Your Information:</h3>
   </div>
   <div class="form-container final-form-container">
-    <form action="" method="post" class="final-form">
+    <form  method="post" class="final-form">
       {{#if fail}}
         <p style="color: rgb(199, 34, 34); font-size: 2rem">Both passwords
           should match</p>
@@ -29,7 +29,7 @@
         required
       />
       <select name="gender" id="gender">
-        {{! <option value="Gender" class="gen"></option> }}
+        <option value="Gender" class="gen">Select</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Female">Prefer Not to Say</option>
