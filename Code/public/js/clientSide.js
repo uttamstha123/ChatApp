@@ -8,7 +8,6 @@ fetch("./serverResponse.env")
     signup = text;
     if (signup == "true") {
       verified();
-      nextPage.href = "/signup/userDetails.html";
       nextPage.style = "pointer-events: visible";
       nextPage.style.background = "#5e27a7";
       // delete data inside serverResponse

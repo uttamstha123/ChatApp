@@ -66,28 +66,6 @@ button {
   animation-duration: 0.29s;
 }
 
-@keyframes Giggle {
-  0% {
-    transform: rotateZ(0deg) scale(1.05);
-  }
-
-  25% {
-    transform: rotateZ(5deg) scale(1.1);
-  }
-
-  50% {
-    transform: rotateZ(0deg) scale(1.1);
-  }
-
-  75% {
-    transform: rotateZ(-5deg) scale(1.05);
-  }
-
-  100% {
-    transform: rotateZ(0deg) scale(1);
-  }
-}
-
 input {
   border: none;
   outline: none;
@@ -153,7 +131,6 @@ a {
 .heading-text h3 {
   font-size: 2.5rem;
   color: var(--white-text-100);
-
 }
 
 .form-container {
@@ -165,6 +142,7 @@ a {
   background: var(--primary-clr);
   padding: 10rem 2rem 0rem 2rem;
   gap: 1.5rem;
+  position: relative;
 }
 .final-form-container {
   padding: 3rem 2rem;
@@ -174,16 +152,15 @@ a {
   margin-bottom: 3rem;
 }
 
-select, option {
+select,
+option {
   padding: 1rem;
-
   font-size: 1.8rem;
   outline: none;
   border: none;
   border-radius: 0.8rem;
   color: black;
 }
-
 
 .form-container form {
   width: 100%;
@@ -253,7 +230,7 @@ form .reset {
   color: var(--primary-clr);
 }
 .final-btn {
-  padding: 1.5rem 2.5rem; 
+  padding: 1.5rem 2.5rem;
 }
 
 input:last-child {
@@ -270,6 +247,13 @@ input:last-child {
   font-size: 1.8rem;
   padding: 0.75rem 2.75rem;
   margin: 4rem 0 2.5rem 0;
+}
+
+.registered-msg {
+  font-size: 1.8rem;
+  color: var(--white-text-100);
+  margin-top: -4rem;
+  z-index: 10;
 }
 
 /*  continue to redirect next page */
@@ -345,5 +329,27 @@ input:last-child {
   .heading-text,
   .form-container {
     grid-column: 5/9;
+  }
+}
+
+@keyframes Giggle {
+  0% {
+    transform: rotateZ(0deg) scale(1.05);
+  }
+
+  25% {
+    transform: rotateZ(5deg) scale(1.1);
+  }
+
+  50% {
+    transform: rotateZ(0deg) scale(1.1);
+  }
+
+  75% {
+    transform: rotateZ(-5deg) scale(1.05);
+  }
+
+  100% {
+    transform: rotateZ(0deg) scale(1);
   }
 }

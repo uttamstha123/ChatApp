@@ -10,12 +10,13 @@ const hbs = require("express-handlebars");
 // router
 // const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
+
 // configuration
 dotEnv.config({ path: "./config/config" });
 dotEnv.config({ path: "./config/serverResponse" });
 
 // set static files
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("./public"));
 
 // making view engine
 // app.set('views', path.join(__dirname,"views"))
@@ -61,9 +62,7 @@ app.get("/", (req, res) => {
   // res.sendFile(__dirname + "/public/index.html");
 
   // let's render the template
-  res.render("index",{
-    page:'Login'
+  res.render("index", {
+    page: "Login",
   });
 });
-
-
