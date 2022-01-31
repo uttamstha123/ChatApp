@@ -71,7 +71,10 @@ app.post("/", async (req, res) => {
   if (email.length && password.length) {
     const userLogin = await UserDetails.find({ email: email });
     if (password == userLogin[0].password1) {
-      return res.render('index')
+      return res.render('profile', {
+        name: userLogin[0].fullName,
+        bio: userLogin[0].bio,
+      })
     }
   }
     res.render("index", {
