@@ -13,7 +13,6 @@ require("dotenv").config();
 const signupRoute = require("./route/signup");
 const { profile } = require("console");
 
-
 // set static files
 app.use(express.static("./public"));
 
@@ -35,14 +34,9 @@ app.use(bodyParser.json()); //parsing json
 // routes
 app.use("/signup", signupRoute);
 // app.use('/userDetails.html',userDetailsRoute)
-mongo
-  .connect(
-    process.env.DB_URI,
-    { useNewUrlParser: true }
-  )
-  .then(() => {
-    console.log("Database connected successfully...");
-  });
+mongo.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
+  console.log("Database connected successfully...");
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server is on the track...");
@@ -66,15 +60,24 @@ app.post("/", async (req, res) => {
   const { email, password } = req.body;
   if (email.length && password.length) {
     const userLogin = await UserDetails.find({ email: email });
-    if (password == userLogin[0].password1) {
-      return res.render('profile', {
-        name: userLogin[0].fullName,
-        bio: userLogin[0].bio,
+    console.log(userLogin);
+    if (userLogin.length) {
+      if (password == userLogin[0].password1) {
+        return res.render("profile", {
+          name: userLogin[0].fullName,
+          bio: userLogin[0].bio,
+        });
+      }
+      else {
+        res.render("index", {
+          incorrectLogin: true,
+        });
+      }
+    }
+    else {
+      res.render('index', {
+        notRegistered: true
       })
     }
   }
-    res.render("index", {
-      incorrectLogin: true,
-    });
-  }
-);
+});

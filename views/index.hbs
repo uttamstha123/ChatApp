@@ -7,6 +7,9 @@
         {{#if incorrectLogin}}
         <p style="color: #c53554" class="registered-msg">Invalid Email or password</p>
         {{/if}}
+        {{#if notRegistered}}
+        <p style="color: #c53554" class="registered-msg">Email not registered. Please Signup</p>
+        {{/if}}
         <form action="/" method="post">
             <input type="email" name="email" class="email" placeholder="Email">
             <input type="password" placeholder="Password" name="password" class="password" />
