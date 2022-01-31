@@ -4,8 +4,11 @@
     </section>
 
     <section class="form-container">
-        <form action="/" method="GET">
-            <input type="email" name="email" class="email" placeholder="Email or Username">
+        {{#if incorrectLogin}}
+        <p style="color: #c53554" class="registered-msg">Invalid Email or password</p>
+        {{/if}}
+        <form action="/" method="post">
+            <input type="email" name="email" class="email" placeholder="Email">
             <input type="password" placeholder="Password" name="password" class="password" />
             <a href="/" class="reset">Forgot Password ?</a>
             <button type="submit" id="login">Login</button>
@@ -20,6 +23,6 @@
         </div>
     </section>
     <div class="img-container">
-        <img src="./MainLogo.png" alt="" / width='100%'>
+        <img src="./MainLogo.png" alt="" width='100%'>
     </div>
 </div>

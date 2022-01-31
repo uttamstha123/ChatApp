@@ -2,9 +2,7 @@ const route = require("express").Router();
 const fs = require("fs");
 const { Auth } = require("two-step-auth");
 const Joi = require("joi");
-// const User = require("../model/User");
 const UserDetails = require("../model/UserDetails");
-// const mongoose = require("mongoose");
 
 var isSignUp = false;
 
@@ -24,7 +22,7 @@ route.get("/userDetails", (req, res) => {
     res.redirect("/signup");
   }
 });
-
+let isNewUser;
 let mail;
 let otp;
 route.post("/", async (req, res) => {
@@ -53,22 +51,7 @@ route.post("/", async (req, res) => {
             }
           }
         );
-        // save to db
-        // saveEmail(email);
-        // const user = new User({
-        //   email: mail,
-        // });
-        // await user.save((err, result) => {
-        //   if (err) {
-        //     console.log(err);
-        //   } else {
-        //     console.log(result);
-        //   }
-        // });
-        // res.send(user);
-
-        // res.send("SignUp successfull");
-        // signUp = true;
+        
       } else {
         console.log("Not good");
         fs.writeFile(
@@ -91,10 +74,10 @@ route.post("/", async (req, res) => {
           console.log(res);
           otp = res.OTP;
         };
-
+        
         // Check is email is already registered
-        const isNewUser = await UserDetails.findOne({ email: email });
-        // console.log(isNewUser);
+        isNewUser = await UserDetails.findOne({ email: email });
+        console.log(isNewUser);
         if (isNewUser == null) {
           sendOTP(value.email);
         } else {
@@ -104,7 +87,6 @@ route.post("/", async (req, res) => {
         }
       } else {
         let errorMsg = "Invalid Email";
-        // console.log();
         return res.status(504).render("signup", {
           place: errorMsg,
           page: "SignUp",
@@ -135,6 +117,7 @@ route.post("/userDetails", async (req, res) => {
     bio: req.body.bio,
   });
   if (password == confirm) {
+    
     await userDetails.save((err, result) => {
       if (err) {
         console.log(err);
@@ -142,7 +125,7 @@ route.post("/userDetails", async (req, res) => {
           page: "Create Profile",
         });
       } else {
-        res.status(200).send(result);
+        res.status(200).redirect('../');
       }
     });
   } else {
@@ -152,7 +135,5 @@ route.post("/userDetails", async (req, res) => {
     });
   }
 });
-// async function saveEmail(email) {
 
-// }
 module.exports = route;

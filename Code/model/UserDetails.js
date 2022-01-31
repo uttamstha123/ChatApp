@@ -25,6 +25,10 @@ const userDetailSchema = mongoose.Schema({
     required: true,
     max: 50,
   },
+
+},
+{
+  timestamps: true
 });
 
 module.exports = mongoose.model("userDetails", userDetailSchema);
