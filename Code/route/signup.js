@@ -2,9 +2,11 @@ const route = require("express").Router();
 const fs = require("fs");
 const { Auth } = require("two-step-auth");
 const Joi = require("joi");
-const User = require("../model/User");
+// const User = require("../model/User");
 const UserDetails = require("../model/UserDetails");
 // const mongoose = require("mongoose");
+
+var isSignUp = false;
 
 // remove data
 route.get("/", (req, res) => {
@@ -13,10 +15,14 @@ route.get("/", (req, res) => {
   });
 });
 
-route.get("/userDetails.html", (req, res) => {
-  res.render("userDetails", {
-    page: "Create Profile",
-  });
+route.get("/userDetails", (req, res) => {
+  if (isSignUp) {
+    res.render("userDetails", {
+      page: "Create Profile",
+    });
+  } else {
+    res.redirect("/signup");
+  }
 });
 
 let mail;
@@ -34,6 +40,7 @@ route.post("/", async (req, res) => {
   try {
     if (inputOTP) {
       if (otp == inputOTP) {
+        isSignUp = true;
         console.log("good");
         fs.writeFile(
           __dirname.substr(0, __dirname.indexOf("route")) +
@@ -48,9 +55,9 @@ route.post("/", async (req, res) => {
         );
         // save to db
         // saveEmail(email);
-        const user = new User({
-          email: mail,
-        });
+        // const user = new User({
+        //   email: mail,
+        // });
         // await user.save((err, result) => {
         //   if (err) {
         //     console.log(err);
@@ -84,7 +91,17 @@ route.post("/", async (req, res) => {
           console.log(res);
           otp = res.OTP;
         };
-        sendOTP(value.email);
+
+        // Check is email is already registered
+        const isNewUser = await UserDetails.findOne({ email: email });
+        // console.log(isNewUser);
+        if (isNewUser == null) {
+          sendOTP(value.email);
+        } else {
+          return res.render("signup", {
+            alreadySignUp: true,
+          });
+        }
       } else {
         let errorMsg = "Invalid Email";
         // console.log();
@@ -103,10 +120,11 @@ route.post("/", async (req, res) => {
     email: mail,
     inputOtp: inputOTP,
     page: "SignUp",
+    alreadySignUp: false,
   });
 });
 
-route.post("/userDetails.html", async (req, res) => {
+route.post("/userDetails", async (req, res) => {
   const { password, confirm } = req.body;
   const userDetails = new UserDetails({
     email: mail,
