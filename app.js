@@ -33,13 +33,13 @@ app.use(bodyParser.json()); //parsing json
 
 // routes
 app.use("/signup", signupRoute);
-// app.use('/userDetails.html',userDetailsRoute)
+
 mongo.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
   console.log("Database connected successfully...");
-});
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Server is on the track...");
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log("Server is on the track...");
+  });
 });
 
 fs.writeFile(__dirname + "/public/serverResponse.env", "", (err) => {
