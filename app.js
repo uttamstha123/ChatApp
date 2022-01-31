@@ -2,20 +2,17 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const mongo = require("mongoose");
-const dotEnv = require("dotenv");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const hbs = require("express-handlebars");
 const UserDetails = require("./model/UserDetails");
+require("dotenv").config();
 
 // router
 // const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
 const { profile } = require("console");
 
-// configuration
-dotEnv.config({ path: "./config/config" });
-dotEnv.config({ path: "./config/serverResponse" });
 
 // set static files
 app.use(express.static("./public"));
@@ -38,10 +35,9 @@ app.use(bodyParser.json()); //parsing json
 // routes
 app.use("/signup", signupRoute);
 // app.use('/userDetails.html',userDetailsRoute)
-
 mongo
   .connect(
-    "mongodb+srv://event618horizon:After%40123glow@cluster0.8evbz.mongodb.net/SignUp?retryWrites=true&w=majority",
+    process.env.DB_URI,
     { useNewUrlParser: true }
   )
   .then(() => {
