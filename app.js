@@ -47,7 +47,7 @@ mongo
   .then(() => {
     console.log("Database connected successfully...");
   });
-const PORT = dotEnv.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server is on the track...");
 });
