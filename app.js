@@ -48,15 +48,19 @@ fs.writeFile(__dirname + "/public/serverResponse.env", "", (err) => {
     console.log("File written successfully\n");
   }
 });
+app.get('/', (req, res) => {
 
-app.get("/", (req, res) => {
+  res.render("index");
+})
+
+app.get("/login", (req, res) => {
   // let's render the template
-  res.render("index", {
+  res.render("login", {
     page: "Login",
   });
 });
 
-app.post("/", async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   if (email.length && password.length) {
     const userLogin = await UserDetails.find({ email: email });
@@ -69,15 +73,16 @@ app.post("/", async (req, res) => {
         });
       }
       else {
-        res.render("index", {
+        res.render("login", {
           incorrectLogin: true,
         });
       }
     }
     else {
-      res.render('index', {
+      res.render('login', {
         notRegistered: true
       })
     }
+  
   }
 });

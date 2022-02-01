@@ -1,0 +1,49 @@
+.nav {
+    background: var(--primary-clr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+}
+
+.progsake p {
+    font-size: 4.5rem;
+    color: whitesmoke
+}
+
+.links {
+    display: flex;
+    gap: 3rem;
+}
+
+.links a {
+    font-size: 2.5rem;
+}
+
+.links a:hover {
+    color: rgb(46, 46, 201);
+    transition: all ease;
+}
+
+
+@media screen and (max-width: 500px) {
+    .progsake p {
+        font-size: 2rem;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 3rem;
+    }
+
+    .links {
+        display: flex;
+        gap: 3rem;
+    }
+
+    .links a {
+        font-size: 1.5rem;
+    }
+}
