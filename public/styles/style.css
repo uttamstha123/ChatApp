@@ -23,7 +23,6 @@ body {
   font-family: var(--ff-primary);
   width: 100%;
   height: 100vh;
-
 }
 
 h1,
@@ -105,7 +104,7 @@ a {
 
 .img-container {
   position: absolute;
-  top: 40%;
+  bottom: -20%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0.6;
@@ -145,7 +144,7 @@ a {
   display: flex;
   flex-direction: column;
   background: var(--primary-clr);
-  padding: 10rem 2rem 0rem 2rem;
+  padding: 10rem 2rem;
   gap: 1.5rem;
   position: relative;
 }
@@ -184,11 +183,23 @@ form input {
 form .reset {
   font-size: 1.75rem;
   align-self: flex-end;
+  z-index: 10;
 }
 
 #login {
   margin-top: 2rem;
   cursor: pointer;
+  z-index: 10;
+  background: var(--white-text-100);
+  color: var(--input-text);
+  padding: 1rem 4rem;
+  border-radius: .4rem;
+  transition: all .25s ;
+}
+
+#login:hover {
+  background: var(--input-text);
+  color: var(--white-text-100);
 }
 
 .or {
@@ -258,7 +269,7 @@ input:last-child {
 }
 
 .registered-msg {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--white-text-100);
   margin-top: -4rem;
   z-index: 10;

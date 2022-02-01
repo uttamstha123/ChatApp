@@ -66,3 +66,12 @@
       grid-column: 5/9;
     }
   }
+
+  @media screen and (max-width: 400px) {
+    .form-container{
+      padding: 2rem;
+    }
+    .registered-msg{
+      font-size: 1.4rem;
+    }
+  }
