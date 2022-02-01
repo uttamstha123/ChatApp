@@ -5,3 +5,8 @@
 <h1> {{userName}}</h1>
 <h1> {{about}}</h1>
 <img src={{imgUrl}} class="userImg">
+<script type = "text/javascript" >
+function preventBack() { window.history.forward(); }
+setTimeout("preventBack()", 0);
+window.onunload = function () { null };
+</script>
