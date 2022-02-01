@@ -1,9 +1,13 @@
+
+/* navigation */
+
 .nav {
     background: var(--primary-clr);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 3rem;
+    padding: 0rem 3rem;
+    height: 8vh;
 }
 
 .progsake p {
@@ -46,4 +50,17 @@
     .links a {
         font-size: 1.5rem;
     }
+}
+
+/*  footer  */
+
+.footer {
+    background: var(--primary-clr);
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer h1 {
+    font-size: 2.5rem;
 }

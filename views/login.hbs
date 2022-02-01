@@ -8,7 +8,7 @@
         <p style="color: #ff1010" class="registered-msg">Invalid Email or password</p>
         {{/if}}
         {{#if notRegistered}}
-        <p style="color: #ff1010" class="registered-msg">Email not registered. Please Signup</p>
+        <p style="color: #df1212" class="registered-msg">Email not registered. Please Signup</p>
         {{/if}}
         <form method="post">
             <input type="email" name="email" class="email" placeholder="Email" required>
@@ -24,6 +24,7 @@
             </div>
             <a href="./signup" id="signup">SignUp</a>
         </div> --}}
+        <p style="font-size: 2rem; color: white; margin: 5rem 0 -8rem 0">Already have an account?&nbsp; <a href="./signup" style="font-size: 2rem; text-decoration: underline; color: rgb(20, 20, 228);">SignUp</a></p>
     </section>
     {{!-- <div class="img-container">
         <img src="./MainLogo.png" alt="" width='100%'>

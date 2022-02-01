@@ -125,7 +125,7 @@ route.post("/userDetails", async (req, res) => {
           page: "Create Profile",
         });
       } else {
-        res.status(200).redirect('../');
+        res.status(200).redirect('../login');
       }
     });
   } else {

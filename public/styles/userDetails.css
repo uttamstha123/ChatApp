@@ -2,27 +2,49 @@
   font-size: inherit;
 }
 .profile-container {
-  height: 100vh;
+  height: 85vh;
   width: 100%;
   background-color: #1e1e1e;
   padding: 2rem 0 2rem 2rem;
+  display: flex;
+  gap: 6rem;
 }
 
 .character {
-  height: 15rem;
-  width: 15rem;
+  border: 1px solid white;
+  height: 280px;
+  width: 280px;
   border-radius: 50%;
   overflow: hidden;
+  margin: 1.5rem;
 }
 
-.character h1 {
-  font-size: 1.5rem;
+.top-left {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  margin-left: 1rem;
+  /* border: 1px solid white; */
 }
-.character-content {
+.namenbio {
+  font-size: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.namenbio h2 {
+  font-size: 2rem;
+  margin-top: -2rem;
+  color: rgb(219, 204, 204);
+}
+
+/* .character-content {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-}
+} */
 
 .character img {
   object-fit: cover;
@@ -32,15 +54,23 @@
 }
 
 .user {
-  width: 60%;
+  /* border: 1px solid white; */
+  width: 40%;
   padding-top: 2rem;
+  color: rgb(238, 227, 227);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 .user .char-name {
-  font-size: 2.25rem;
+  font-size: 3.5rem;
+}
+.user h3 {
+  font-size: 2rem;
 }
 
 .user .about {
-  font-size: 1.15rem;
+  font-size: 2rem;
   color: #cacad1;
   letter-spacing: 0.4px;
 }

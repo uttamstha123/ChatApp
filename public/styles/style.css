@@ -25,6 +25,10 @@ body {
   height: 100vh;
 }
 
+.indexPage-container {
+  height: 85vh;
+}
+
 h1,
 h2,
 h3,
