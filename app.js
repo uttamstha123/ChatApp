@@ -11,10 +11,11 @@ require("dotenv").config();
 // router
 // const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
-const { profile } = require("console");
+const displayUser = require("./route/marvel");
 
 // set static files
 app.use(express.static("./public"));
+app.use(express.static('./Images'));
 
 // making view engine
 // app.set('views', path.join(__dirname,"views"))
@@ -31,8 +32,10 @@ app.engine(
 app.use(bodyParser.urlencoded({ extended: false })); //parses form inputted value
 app.use(bodyParser.json()); //parsing json
 
+
 // routes
 app.use("/signup", signupRoute);
+app.use("/login", displayUser);
 
 mongo.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
   console.log("Database connected successfully...");
@@ -60,29 +63,3 @@ app.get("/login", (req, res) => {
   });
 });
 
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  if (email.length && password.length) {
-    const userLogin = await UserDetails.find({ email: email });
-    console.log(userLogin);
-    if (userLogin.length) {
-      if (password == userLogin[0].password1) {
-        return res.render("profile", {
-          name: userLogin[0].fullName,
-          bio: userLogin[0].bio,
-        });
-      }
-      else {
-        res.render("login", {
-          incorrectLogin: true,
-        });
-      }
-    }
-    else {
-      res.render('login', {
-        notRegistered: true
-      })
-    }
-  
-  }
-});
