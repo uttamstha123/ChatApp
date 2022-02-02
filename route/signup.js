@@ -105,7 +105,7 @@ route.post("/", async (req, res) => {
   });
 });
 
-// * User Details post handling
+                                        // * User Details post handling
 
 const registerMail = (mail) => {
   const nodeMailer = require("nodemailer");

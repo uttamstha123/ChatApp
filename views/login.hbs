@@ -15,11 +15,11 @@
             <input type="email" name="email" class="email" placeholder="Email" required>
             <input type="password" placeholder="Password" name="password" class="password" required>
             {{#if incorrectLogin}}
-            {{#if gotPassword.length}}
+            {{!-- {{#if gotPassword.length}}
             <a href="/login/forgetpassword" class="reset">Your Password: {{gotPassword}}</a>
-            {{else}}
+            {{else}} --}}
             <a href="/login/forgetpassword" class="reset">Forgot Password</a>
-            {{/if}}
+            {{!-- {{/if}} --}}
             {{/if}}
             <button type="submit" id="login">Login</button>
         </form>

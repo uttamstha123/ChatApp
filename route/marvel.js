@@ -78,6 +78,7 @@ let marvelCharactersFemale = [
 
 const app = require("express").Router();
 const UserDetails = require("../model/UserDetails");
+
 let getEmail;
 
 app.post("/", async (req, res) => {
@@ -128,14 +129,32 @@ app.post("/", async (req, res) => {
   }
 });
 
+const forgotPass = (mail, password) => {
+  const nodeMailer = require("nodemailer");
+  const transporter = nodeMailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "progsake@gmail.com",
+      pass: "ChatApp@progsake",
+    },
+  });
+  const composeMail = {
+    from: "progsake@gmail.com",
+    to: mail,
+    subject: "Forgot your password?",
+    text:
+      "We heard you forgot your ProgSake password. Well, how irresponsible of you.\nPlease find your password below:\n\nYour password is " +
+      password,
+  };
+  transporter.sendMail(composeMail, (err, info) => {
+    if (err) console.log(err);
+    else console.log("Forgot Password mail sent");
+  });
+};
 app.get("/forgetpassword", async (req, res) => {
-
   const userDetails = await UserDetails.find({ email: getEmail });
   const password = userDetails[0].password1;
-  // console.log(userDetails);
-  return res.render("login", {
-    gotPassword: password,
-    incorrectLogin: true,
-  });
+  forgotPass(getEmail, password);
+  res.status(200).redirect("../login");
 });
-module.exports = app; 
+module.exports = app;
