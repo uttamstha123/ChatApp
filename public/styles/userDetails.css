@@ -1,13 +1,16 @@
+.content-container {
+  height: 90vh;
+  background-color: #1e1e1e;
+  padding: 2rem 0;
+}
 .profile-container h1 {
   font-size: inherit;
 }
 .profile-container {
-  height: 90vh;
   width: 100%;
-  background-color: #1e1e1e;
   padding: 2rem 0 2rem 2rem;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .character {
@@ -38,6 +41,25 @@
 .top-left .namebio {
   font-size: 3em;
 }
+
+.card {
+  background-color: #f7f7f7;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.bio {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.bio h1 {
+  font-size: 2.2em;
+}
+
+.card > * {
+  color: #333;
+}
 .top-left .namebio h2 {
   color: rgb(219, 204, 204);
 }
@@ -64,7 +86,7 @@
 }
 .user .about {
   font-size: 2.2em;
-  color: #cacad1;
+  color: #2e2e2e;
   letter-spacing: 0.4px;
 }
 
@@ -74,11 +96,13 @@
   }
 }
 @media screen and (max-width: 760px) {
+  .content-container {
+    height: auto;
+  }
   .profile-container > * {
     font-size: 8px;
   }
   .profile-container {
-    height: auto;
     display: flex;
     flex-direction: column;
     padding: 0;
