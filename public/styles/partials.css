@@ -35,9 +35,9 @@
     background: var(--primary-clr);
     /* height: 7vh; */
     width: 100%;
-    padding: 1rem .5rem;
-    position: absolute;
-    bottom: 0;
+    padding: 1rem 2rem;
+    /* position: absolute; */
+    /* bottom: 0; */
     text-align:center;
     display: flex;
     justify-content: center;
@@ -47,10 +47,12 @@
     font-size: 2.25vh;
 }
 
+
+
 @media screen and (max-width: 1080px) {
     
     .progsake p {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
     .links a{
@@ -65,7 +67,7 @@
     }
 
     .footer h1{
-        font-size: 1.9vh;
+        font-size: 2vh;
     }
     .nav {
         display: flex;
@@ -83,5 +85,3 @@
         font-size: 1.5rem;
     }
 }
-
-/*  footer  */
