@@ -1,3 +1,4 @@
+
 .content-container {
   height: 90vh;
   background-color: #1e1e1e;
@@ -148,5 +149,8 @@
   }
   .user .char-name h1 {
     font-size: 4.2em;
+  }
+  .bio{
+    font-size: 6px;
   }
 }
