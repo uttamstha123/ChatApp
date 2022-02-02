@@ -86,7 +86,7 @@ app.post("/", async (req, res) => {
   if (email.length && password.length) {
     // sending this email to forgetpassword
     getEmail = email;
-    console.log(getEmail);
+    // console.log(getEmail);
     // sending done
     if (userLogin.length) {
       if (password == userLogin[0].password1) {
@@ -132,7 +132,7 @@ app.get("/forgetpassword", async (req, res) => {
 
   const userDetails = await UserDetails.find({ email: getEmail });
   const password = userDetails[0].password1;
-  console.log(userDetails);
+  // console.log(userDetails);
   return res.render("login", {
     gotPassword: password,
     incorrectLogin: true,
