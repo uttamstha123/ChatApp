@@ -25,11 +25,13 @@
 </div>
 {{>footer}}
 <script>
+      if(window.innerWidth > 900) {
       const windowHeight = window.innerHeight;
       const navHeight = document.querySelector('.nav').offsetHeight;
       const footerHeight = document.querySelector('.footer').offsetHeight;
       const profileContainer = document.querySelector('.content-container');
       const height = (windowHeight - navHeight - footerHeight) + 'px';
       profileContainer.style = `height: ${height}`; 
+      }
 
 </script>

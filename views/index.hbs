@@ -1,3 +1,14 @@
 {{>nav}}
 <div class="indexPage-container"></div>
 {{>footer}}
+<script>
+      if(window.innerWidth > 900) {
+      const windowHeight = window.innerHeight;
+      const navHeight = document.querySelector('.nav').offsetHeight;
+      const footerHeight = document.querySelector('.footer').offsetHeight;
+      const pageContainer = document.querySelector('.indexPage-container');
+      const height = (windowHeight - navHeight - footerHeight) + 'px';
+      pageContainer.style = `height: ${height}`; 
+      }
+
+</script>
