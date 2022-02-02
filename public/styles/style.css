@@ -3,11 +3,12 @@
 
   /* --primary-clr: #4bc015; */
   --primary-clr: #2B9EB3;
+  --links-clr: #2b44b3;
   --white-text-100: #fcfcfc;
   --white-text-200: #f4f4f4;
   --placeholder-text: #7c7d7c;
-  --input-text: #333;
-
+  --input-text: #222222;
+  --error-msg: #bb0d4f;
   --ff-primary: "poppins", sans-serif;
 }
 
@@ -25,6 +26,7 @@ body {
   height: 100vh;
 }
 
+/* index page */
 .indexPage-container {
   height: 85vh;
 }
@@ -148,7 +150,7 @@ a {
   display: flex;
   flex-direction: column;
   background: var(--primary-clr);
-  padding: 10rem 2rem;
+  padding: 10rem 2rem 0 2rem;
   gap: 1.5rem;
   position: relative;
 }
@@ -198,7 +200,7 @@ form .reset {
   color: var(--input-text);
   padding: 1rem 4rem;
   border-radius: .4rem;
-  transition: all .25s ;
+  transition: all .25s;
 }
 
 #login:hover {
@@ -206,6 +208,7 @@ form .reset {
   color: var(--white-text-100);
 }
 
+/* 
 .or {
   margin: 2.25rem;
   display: flex;
@@ -233,7 +236,7 @@ form .reset {
 
 .or .divider {
   color: var(--white-text-200);
-}
+} */
 
 /* Sign up page styling */
 .btn {
@@ -262,8 +265,6 @@ input:last-child {
 
 .password {
   padding: 1rem 1.5rem;
-  text-align: center;
-  letter-spacing: 4px;
 }
 
 .btn-p {
@@ -274,9 +275,21 @@ input:last-child {
 
 .registered-msg {
   font-size: 2rem;
-  color: var(--white-text-100);
+  color: var(--error-msg);
   margin-top: -4rem;
   z-index: 10;
+}
+
+.already-registered {
+  font-size: 1.5rem;
+  color: var(--input-text);
+  margin: 1rem 0 1rem 1rem;
+}
+
+.already-registered a {
+  font-size: 1.5rem;
+  color: var(--links-clr);
+  text-decoration: underline;
 }
 
 /*  continue to redirect next page */

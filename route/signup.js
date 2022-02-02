@@ -51,7 +51,6 @@ route.post("/", async (req, res) => {
             }
           }
         );
-        
       } else {
         console.log("Not good");
         fs.writeFile(
@@ -70,11 +69,11 @@ route.post("/", async (req, res) => {
       const { error, value } = schema.validate({ email });
       if (!error) {
         const sendOTP = async (value) => {
-          const res = await Auth(value, "ChatApp");
+          const res = await Auth(value, "ProgSake");
           console.log(res);
           otp = res.OTP;
         };
-        
+
         // Check is email is already registered
         isNewUser = await UserDetails.findOne({ email: email });
         console.log(isNewUser);
@@ -106,6 +105,32 @@ route.post("/", async (req, res) => {
   });
 });
 
+// * User Details post handling
+
+const registerMail = (mail) => {
+  const nodeMailer = require("nodemailer");
+
+  const transporter = nodeMailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "progsake@gmail.com",
+      pass: "ChatApp@progsake",
+    },
+  });
+
+  const composeMail = {
+    from: "progsake@gmail.com",
+    to: mail,
+    subject: "Successfully Registered",
+    text: "Thanks for registering in ProgSake.\n\nOur purpose is not to provide you best service but to check our following skills :\n\nNodeJs\nExpress\nMongoDB\nHTML template engines (handlebars)\nHTML\nCSS\nJavascript\n-------------------\nDependencies included :\nexpress\nexpress-handlebars\nmongoose\nnodemailer\nnodemon\ndotenv\nbody-parser\ntwo-step-auth\njoi\n\nSeriously, we do not care about your feedback.",
+  };
+
+  transporter.sendMail(composeMail, (err, info) => {
+    if (err) console.log(err);
+    else console.log("Sent");
+  });
+};
+
 route.post("/userDetails", async (req, res) => {
   const { password, confirm } = req.body;
   const userDetails = new UserDetails({
@@ -116,8 +141,14 @@ route.post("/userDetails", async (req, res) => {
     gender: req.body.gender,
     bio: req.body.bio,
   });
-  if (password == confirm) {
+  if(!userDetails.gender) {
+
+    return res.render('userDetails', {
+      invalidGen: true,
     
+    })
+  }
+  if (password == confirm) {
     await userDetails.save((err, result) => {
       if (err) {
         console.log(err);
@@ -125,7 +156,8 @@ route.post("/userDetails", async (req, res) => {
           page: "Create Profile",
         });
       } else {
-        res.status(200).redirect('../login');
+        registerMail(mail);
+        res.status(200).redirect("../login");
       }
     });
   } else {

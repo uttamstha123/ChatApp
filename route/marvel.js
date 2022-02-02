@@ -78,18 +78,25 @@ let marvelCharactersFemale = [
 
 const app = require("express").Router();
 const UserDetails = require("../model/UserDetails");
+let getEmail;
 
 app.post("/", async (req, res) => {
   const { email, password } = req.body;
   const userLogin = await UserDetails.find({ email: email });
   if (email.length && password.length) {
+    // sending this email to forgetpassword
+    getEmail = email;
+    console.log(getEmail);
+    // sending done
     if (userLogin.length) {
       if (password == userLogin[0].password1) {
         let userName;
         let about;
         let imgUrl;
         if (userLogin[0].gender == "Male") {
-          let indexnumber = Math.floor(Math.random() * marvelCharactersMale.length);
+          let indexnumber = Math.floor(
+            Math.random() * marvelCharactersMale.length
+          );
           userName = marvelCharactersMale[indexnumber].name;
           about = marvelCharactersMale[indexnumber].about;
           imgUrl = marvelCharactersMale[indexnumber].imgUrl;
@@ -121,4 +128,14 @@ app.post("/", async (req, res) => {
   }
 });
 
-module.exports = app;
+app.get("/forgetpassword", async (req, res) => {
+
+  const userDetails = await UserDetails.find({ email: getEmail });
+  const password = userDetails[0].password1;
+  console.log(userDetails);
+  return res.render("login", {
+    gotPassword: password,
+    incorrectLogin: true,
+  });
+});
+module.exports = app; 

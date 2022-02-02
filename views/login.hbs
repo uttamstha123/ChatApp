@@ -5,19 +5,26 @@
 
     <section class="form-container">
         {{#if incorrectLogin}}
-        <p style="color: #ff1010" class="registered-msg">Invalid Email or password</p>
+        <p class="registered-msg">Invalid Email or password</p>
         {{/if}}
         {{#if notRegistered}}
-        <p style="color: #df1212" class="registered-msg">Email not registered. Please Signup</p>
+        <p class="registered-msg">Email not registered. Please Signup</p>
         {{/if}}
+
         <form method="post">
             <input type="email" name="email" class="email" placeholder="Email" required>
             <input type="password" placeholder="Password" name="password" class="password" required>
-            <a href="/" class="reset">Forgot Password ?</a>
+            {{#if incorrectLogin}}
+            {{#if gotPassword.length}}
+            <a href="/login/forgetpassword" class="reset">Your Password: {{gotPassword}}</a>
+            {{else}}
+            <a href="/login/forgetpassword" class="reset">Forgot Password</a>
+            {{/if}}
+            {{/if}}
             <button type="submit" id="login">Login</button>
         </form>
-        
-        <p style="font-size: 2rem; color: white; margin: 5rem 0 -8rem 0">Already have an account?&nbsp; <a href="./signup" style="font-size: 2rem; text-decoration: underline; color: rgb(20, 20, 228);">SignUp</a></p>
+
+        <p class='already-registered'>Already have an account?&nbsp; <a href="./signup">SignUp</a></p>
     </section>
-    
+
 </div>

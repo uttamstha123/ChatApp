@@ -12,10 +12,11 @@ require("dotenv").config();
 // const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
 const displayUser = require("./route/marvel");
+// const displayPass = require("./route/displayPass");
 
 // set static files
 app.use(express.static("./public"));
-app.use(express.static('./Images'));
+app.use(express.static("./Images"));
 
 // making view engine
 // app.set('views', path.join(__dirname,"views"))
@@ -32,10 +33,10 @@ app.engine(
 app.use(bodyParser.urlencoded({ extended: false })); //parses form inputted value
 app.use(bodyParser.json()); //parsing json
 
-
 // routes
 app.use("/signup", signupRoute);
 app.use("/login", displayUser);
+// app.use("/forgetpassword", displayPass);
 
 mongo.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
   console.log("Database connected successfully...");
@@ -51,10 +52,9 @@ fs.writeFile(__dirname + "/public/serverResponse.env", "", (err) => {
     console.log("File written successfully\n");
   }
 });
-app.get('/', (req, res) => {
-
+app.get("/", (req, res) => {
   res.render("index");
-})
+});
 
 app.get("/login", (req, res) => {
   // let's render the template
@@ -62,4 +62,5 @@ app.get("/login", (req, res) => {
     page: "Login",
   });
 });
+
 
