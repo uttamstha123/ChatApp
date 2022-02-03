@@ -134,8 +134,8 @@ const forgotPass = (mail, password) => {
   const transporter = nodeMailer.createTransport({
     service: "gmail",
     auth: {
-      user: "progsake@gmail.com",
-      pass: "ChatApp@progsake",
+      user: process.env.GMAIL_ID,
+      pass: process.env.PASSWORD,
     },
   });
   const composeMail = {
@@ -151,10 +151,12 @@ const forgotPass = (mail, password) => {
     else console.log("Forgot Password mail sent");
   });
 };
+var mailSent = false;
 app.get("/forgetpassword", async (req, res) => {
   const userDetails = await UserDetails.find({ email: getEmail });
   const password = userDetails[0].password1;
   forgotPass(getEmail, password);
+  mailSent = true;
   res.status(200).redirect("../login");
 });
 module.exports = app;

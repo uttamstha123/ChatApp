@@ -38,7 +38,7 @@ app.use("/signup", signupRoute);
 app.use("/login", displayUser);
 // app.use("/forgetpassword", displayPass);
 
-mongo.connect("mongodb+srv://chatapp:test%40123@cluster0.zcfam.mongodb.net/myFirstDatabase?retryWrites=true&w=majority").then(() => {
+mongo.connect(process.env.DB_URI, {useNewUrlParser: true}).then(() => {
   console.log("Database connected successfully...");
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {

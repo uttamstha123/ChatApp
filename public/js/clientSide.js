@@ -15,6 +15,9 @@ fetch("./serverResponse.txt")
       next.innerText = "Wrong OTP";
       next.style = "background: red;";
       console.log("something went wrong");
+    } else {
+      next.innerText = "Verify OTP";
+      next.style = "background: var(--input-text); ";
     }
   });
 
@@ -29,4 +32,9 @@ function verifyOTP(val) {
     next.innerText = "Verify OTP";
     next.style = "background: var(--input-text); ";
   }
+}
+
+function forgot() {
+  const displayNone = document.querySelector('.reset');
+  displayNone.innerText = 'Check email';
 }

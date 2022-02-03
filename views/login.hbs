@@ -10,16 +10,11 @@
         {{#if notRegistered}}
         <p class="registered-msg">Email not registered. Please Signup</p>
         {{/if}}
-
-        <form method="post" autocomplete="off">
+        <form method="post" autocomplete="on">
             <input type="email" name="email" class="email" placeholder="Email" required>
             <input type="password" placeholder="Password" name="password" class="password" required>
             {{#if incorrectLogin}}
-            {{!-- {{#if gotPassword.length}}
-            <a href="/login/forgetpassword" class="reset">Your Password: {{gotPassword}}</a>
-            {{else}} --}}
-            <a href="/login/forgetpassword" class="reset">Forgot Password</a>
-            {{!-- {{/if}} --}}
+            <a href="/login/forgetpassword" class="reset" onclick="forgot()">Forgot Password</a>
             {{/if}}
             <button type="submit" id="login">Login</button>
         </form>
@@ -28,3 +23,4 @@
     </section>
 
 </div>
+<script src="/js/clientSide.js"></script>
