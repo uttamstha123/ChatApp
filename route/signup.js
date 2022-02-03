@@ -42,7 +42,7 @@ route.post("/", async (req, res) => {
         console.log("good");
         fs.writeFile(
           __dirname.substr(0, __dirname.indexOf("route")) +
-            "/public/serverResponse.env",
+            "/public/serverResponse.txt",
           "true",
           (err) => {
             if (err) console.log(err);
@@ -55,7 +55,7 @@ route.post("/", async (req, res) => {
         console.log("Not good");
         fs.writeFile(
           __dirname.substr(0, __dirname.indexOf("route")) +
-            "/public/serverResponse.env",
+            "/public/serverResponse.txt",
           "false",
           (err) => {
             if (err) console.log(err);
@@ -122,7 +122,7 @@ const registerMail = (mail) => {
     from: "progsake@gmail.com",
     to: mail,
     subject: "Successfully Registered",
-    text: "Thanks for registering in ProgSake.\n\nOur purpose is not to provide you best service but to check our following skills :\n\nNodeJs\nExpress\nMongoDB\nHTML template engines (handlebars)\nHTML\nCSS\nJavascript\n-------------------\nDependencies included :\nexpress\nexpress-handlebars\nmongoose\nnodemailer\nnodemon\ndotenv\nbody-parser\ntwo-step-auth\njoi\n\nSeriously, we do not care about your feedback.",
+    text: "Thanks for registering in ProgSake.\n\nOur purpose is not to provide you best service but to check our following skills :\n\nNodeJs\nExpress\nMongoDB\nHTML template engines (handlebars)\nHTML\nCSS\nJavascript\n-------------------\nDependencies included :\nexpress\nexpress-handlebars\nmongoose\nnodemailer\nnodemon\ndotenv\nbody-parser\ntwo-step-auth\njoi\n\nSeriously, we do not care about your feedback.\n\nCreated by: Uttam Shrestha and Saurabh Awasthi",
   };
 
   transporter.sendMail(composeMail, (err, info) => {
@@ -157,6 +157,12 @@ route.post("/userDetails", async (req, res) => {
         });
       } else {
         registerMail(mail);
+        fs.writeFile(__dirname + "/public/serverResponse.txt", "", (err) => {
+          if (err) console.log(err);
+          else {
+            console.log("File written successfully\n");
+          }
+        });
         res.status(200).redirect("../login");
       }
     });
@@ -167,5 +173,7 @@ route.post("/userDetails", async (req, res) => {
     });
   }
 });
+
+
 
 module.exports = route;

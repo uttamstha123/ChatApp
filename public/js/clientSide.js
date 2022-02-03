@@ -2,7 +2,7 @@ const nextPage = document.querySelector(".continue");
 const next = document.querySelector(".next");
 let signup = "";
 
-fetch("./serverResponse.env")
+fetch("./serverResponse.txt")
   .then((response) => response.text())
   .then((text) => {
     signup = text;

@@ -46,7 +46,7 @@ mongo.connect("mongodb+srv://chatapp:test%40123@cluster0.zcfam.mongodb.net/myFir
   });
 });
 
-fs.writeFile(__dirname + "/public/serverResponse.env", "", (err) => {
+fs.writeFile(__dirname + "/public/serverResponse.txt", "", (err) => {
   if (err) console.log(err);
   else {
     console.log("File written successfully\n");
