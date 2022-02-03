@@ -113,8 +113,8 @@ const registerMail = (mail) => {
   const transporter = nodeMailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.GMAIL_ID,
-      pass: process.env.PASSWORD,
+      user: "progsake@gmail.com",
+      pass: "ChatApp@progsake",
     },
   });
 
