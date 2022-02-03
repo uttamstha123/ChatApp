@@ -38,7 +38,7 @@ app.use("/signup", signupRoute);
 app.use("/login", displayUser);
 // app.use("/forgetpassword", displayPass);
 
-mongo.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
+mongo.connect(process.env.DB_URI).then(() => {
   console.log("Database connected successfully...");
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {

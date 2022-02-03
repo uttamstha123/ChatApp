@@ -11,7 +11,7 @@
         <p class="registered-msg">Email not registered. Please Signup</p>
         {{/if}}
 
-        <form method="post">
+        <form method="post" autocomplete="off">
             <input type="email" name="email" class="email" placeholder="Email" required>
             <input type="password" placeholder="Password" name="password" class="password" required>
             {{#if incorrectLogin}}
