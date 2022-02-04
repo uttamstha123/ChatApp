@@ -4,10 +4,24 @@ const { Auth } = require("two-step-auth");
 const Joi = require("joi");
 const UserDetails = require("../model/UserDetails");
 
-var isSignUp = false;
+let isSignUp = false;
 
 // remove data
 route.get("/", (req, res) => {
+  fs.writeFile(
+    __dirname.substr(0, __dirname.indexOf("route")) +
+      "/public/serverResponse.txt",
+    "",
+    (err) => {
+      if (err) console.log(err);
+      else {
+        console.log("File written successfully\n");
+      }
+    }
+  );
+  if (isSignUp) {
+    return res.redirect("/");
+  }
   res.render("signup", {
     page: "SignUp",
   });
@@ -105,7 +119,7 @@ route.post("/", async (req, res) => {
   });
 });
 
-                                        // * User Details post handling
+// * User Details post handling
 
 const registerMail = (mail) => {
   const nodeMailer = require("nodemailer");
@@ -141,12 +155,10 @@ route.post("/userDetails", async (req, res) => {
     gender: req.body.gender,
     bio: req.body.bio,
   });
-  if(!userDetails.gender) {
-
-    return res.render('userDetails', {
+  if (!userDetails.gender) {
+    return res.render("userDetails", {
       invalidGen: true,
-    
-    })
+    });
   }
   if (password == confirm) {
     await userDetails.save((err, result) => {
@@ -157,12 +169,6 @@ route.post("/userDetails", async (req, res) => {
         });
       } else {
         registerMail(mail);
-        fs.writeFile(__dirname + "/public/serverResponse.txt", "", (err) => {
-          if (err) console.log(err);
-          else {
-            console.log("File written successfully\n");
-          }
-        });
         res.status(200).redirect("../login");
       }
     });
@@ -173,7 +179,5 @@ route.post("/userDetails", async (req, res) => {
     });
   }
 });
-
-
 
 module.exports = route;
