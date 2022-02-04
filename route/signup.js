@@ -3,6 +3,7 @@ const fs = require("fs");
 const { Auth } = require("two-step-auth");
 const Joi = require("joi");
 const UserDetails = require("../model/UserDetails");
+const { mainModule } = require("process");
 
 let isSignUp = false;
 
@@ -50,6 +51,7 @@ route.post("/", async (req, res) => {
     if (inputOTP) {
       if (otp == inputOTP) {
         isSignUp = true;
+        module.exports.isSignUp = isSignUp;
         console.log("good");
         fs.writeFile(
           __dirname.substr(0, __dirname.indexOf("route")) +

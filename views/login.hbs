@@ -13,6 +13,9 @@
         {{#if mailSent}}
         <p class="registered-msg" style="color: rgb(0, 0, 0)">Please check your registered email</p>
         {{/if}}
+        {{#if isSignUp}}
+        <p class="registered-msg" style="color: rgb(0, 0, 0)">Registration Successful<br>Please check your email</p>
+        {{/if}}
 
         <form method="post" autocomplete="on">
             <input type="email" name="email" class="email" placeholder="Email" required>

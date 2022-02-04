@@ -77,7 +77,19 @@ let marvelCharactersFemale = [
 ];
 
 const app = require("express").Router();
+const { render } = require("express/lib/response");
 const UserDetails = require("../model/UserDetails");
+
+const isSign = require("./signup");
+
+app.get("/", (req, res) => {
+  if(isSign.isSignUp){
+   return res.render('login', {
+      isSignUp: true, 
+    })
+  }
+  res.render('login')
+})
 
 let getEmail;
 let mailSent = false;
@@ -199,6 +211,7 @@ const forgotPass = (mail, password) => {
     else console.log("Forgot Password mail sent");
   });
 };
+
 
 
 app.get("/forgetpassword", async (req, res) => {

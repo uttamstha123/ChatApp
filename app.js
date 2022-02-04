@@ -12,7 +12,9 @@ require("dotenv").config();
 // const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
 const displayUser = require("./route/marvel");
+
 // const displayPass = require("./route/displayPass");
+
 
 // set static files
 app.use(express.static("./public"));
