@@ -193,6 +193,11 @@ form .reset {
   z-index: 10;
 }
 
+.delete-btn{
+  text-align: right;
+  margin: 2rem 1.5rem 1.5rem 0 ;
+}
+
 #login {
   margin-top: 2rem;
   cursor: pointer;

@@ -19,19 +19,25 @@
                   </div>
             </div>
       </div>
-            <div class="card bio">
-                  <h1 >{{bio}} </h1>
-            </div>
+      <div class="card bio">
+            <h1>{{bio}} </h1>
+      </div>
+      <div class="delete-btn">
+            <a href='/login/delete' style='padding: .8rem 1rem; border:2px solid white; border-radius: 100px;'
+                  class='delete-account'>Delete Account</a>
+      </div>
+
+
 </div>
 {{>footer}}
 <script>
-      if(window.innerWidth > 900) {
-      const windowHeight = window.innerHeight;
-      const navHeight = document.querySelector('.nav').offsetHeight;
-      const footerHeight = document.querySelector('.footer').offsetHeight;
-      const profileContainer = document.querySelector('.content-container');
-      const height = (windowHeight - navHeight - footerHeight) + 'px';
-      profileContainer.style = `height: ${height}`; 
+      if (window.innerWidth > 900) {
+            const windowHeight = window.innerHeight;
+            const navHeight = document.querySelector('.nav').offsetHeight;
+            const footerHeight = document.querySelector('.footer').offsetHeight;
+            const profileContainer = document.querySelector('.content-container');
+            const height = (windowHeight - navHeight - footerHeight) + 'px';
+            profileContainer.style = `height: ${height}`;
       }
 
 </script>

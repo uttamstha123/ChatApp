@@ -83,16 +83,37 @@ const UserDetails = require("../model/UserDetails");
 const isSign = require("./signup");
 
 app.get("/", (req, res) => {
-  if(isSign.isSignUp){
-   return res.render('login', {
-      isSignUp: true, 
-    })
+  if (isSign.isSignUp) {
+    return res.render("login", {
+      isSignUp: true,
+    });
   }
-  res.render('login')
-})
+  res.render("login");
+});
 
 let getEmail;
 let mailSent = false;
+
+// handle delete request
+// let isDeleted = false;
+// app.get("/delete", async (req, res) => {
+//   // show the popup
+//   // let i = 0;
+//   // while(i <= 1){
+//   //   if(i == 0){
+//   //     alert();
+//   //   }
+//   //   if(i == 1){
+
+//   //   }
+//   // }
+
+//   const popups = require("popups");
+//   popups.alert({
+//     content: "Hello",
+//   });
+//   res.redirect('../')
+// });
 
 app.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -211,8 +232,6 @@ const forgotPass = (mail, password) => {
     else console.log("Forgot Password mail sent");
   });
 };
-
-
 
 app.get("/forgetpassword", async (req, res) => {
   const userDetails = await UserDetails.find({ email: getEmail });
