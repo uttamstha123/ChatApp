@@ -33,8 +33,3 @@ function verifyOTP(val) {
     next.style = "background: var(--input-text); ";
   }
 }
-
-function forgot() {
-  const displayNone = document.querySelector('.reset');
-  displayNone.innerText = 'Check email';
-}

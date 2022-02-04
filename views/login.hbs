@@ -5,16 +5,20 @@
 
     <section class="form-container">
         {{#if incorrectLogin}}
-        <p class="registered-msg">Invalid Email or password</p>
+        <p class="registered-msg">Invalid email or password</p>
         {{/if}}
         {{#if notRegistered}}
         <p class="registered-msg">Email not registered. Please Signup</p>
         {{/if}}
+        {{#if mailSent}}
+        <p class="registered-msg" style="color: rgb(0, 0, 0)">Please check your registered email</p>
+        {{/if}}
+
         <form method="post" autocomplete="on">
             <input type="email" name="email" class="email" placeholder="Email" required>
             <input type="password" placeholder="Password" name="password" class="password" required>
             {{#if incorrectLogin}}
-            <a href="/login/forgetpassword" class="reset" onclick="forgot()">Forgot Password</a>
+            <a href="/login/forgetpassword" class="reset">Forgot Password</a>
             {{/if}}
             <button type="submit" id="login">Login</button>
         </form>

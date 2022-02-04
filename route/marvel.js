@@ -80,8 +80,56 @@ const app = require("express").Router();
 const UserDetails = require("../model/UserDetails");
 
 let getEmail;
+let mailSent = false;
 
 app.post("/", async (req, res) => {
+  const { email, password } = req.body;
+  const userLogin = await UserDetails.find({ email: email });
+  if (email.length && password.length) {
+    // sending this email to forgetpassword
+    getEmail = email;
+    // console.log(getEmail);
+    // sending done
+    if (userLogin.length) {
+      if (password == userLogin[0].password1) {
+        let userName;
+        let about;
+        let imgUrl;
+        if (userLogin[0].gender == "Male") {
+          let indexnumber = Math.floor(
+            Math.random() * marvelCharactersMale.length
+          );
+          userName = marvelCharactersMale[indexnumber].name;
+          about = marvelCharactersMale[indexnumber].about;
+          imgUrl = marvelCharactersMale[indexnumber].imgUrl;
+        } else if (userLogin[0].gender == "Female") {
+          let indexnumber = Math.floor(
+            Math.random() * marvelCharactersFemale.length
+          );
+          userName = marvelCharactersFemale[indexnumber].name;
+          about = marvelCharactersFemale[indexnumber].about;
+          imgUrl = marvelCharactersFemale[indexnumber].imgUrl;
+        }
+        res.render("profile", {
+          name: userLogin[0].fullName,
+          bio: userLogin[0].bio,
+          userName: userName,
+          about: about,
+          imgUrl: imgUrl,
+        });
+      } else {
+        res.render("login", {
+          incorrectLogin: true,
+        });
+      }
+    } else {
+      res.render("login", {
+        notRegistered: true,
+      });
+    }
+  }
+});
+app.post("/forgetpassword", async (req, res) => {
   const { email, password } = req.body;
   const userLogin = await UserDetails.find({ email: email });
   if (email.length && password.length) {
@@ -151,12 +199,15 @@ const forgotPass = (mail, password) => {
     else console.log("Forgot Password mail sent");
   });
 };
-var mailSent = false;
+
+
 app.get("/forgetpassword", async (req, res) => {
   const userDetails = await UserDetails.find({ email: getEmail });
   const password = userDetails[0].password1;
   forgotPass(getEmail, password);
   mailSent = true;
-  res.status(200).redirect("../login");
+  res.status(200).render("login", {
+    mailSent: true,
+  });
 });
 module.exports = app;
