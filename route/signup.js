@@ -19,9 +19,6 @@ route.get("/", (req, res) => {
       }
     }
   );
-  if (isSignUp) {
-    return res.redirect("/");
-  }
   res.render("signup", {
     page: "SignUp",
   });
