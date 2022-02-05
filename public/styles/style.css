@@ -30,7 +30,51 @@ body {
 /* index page */
 .indexPage-container {
   height: 85vh;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center */
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  grid-template-rows: repeat(20, 1fr);
 }
+
+.general-awareness {
+  padding: 3rem;
+  text-align: center;
+  grid-column: 2 / 15;
+  /* grid-row: 1 / 7; */
+}
+
+
+.saurabh { 
+  grid-column: 3 / 8;
+}
+
+.uttam {
+  grid-column: 9 / 14;
+}
+.ceo {
+  background: black;
+  border-radius: 80px;
+  grid-row: 2 / 20;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+}
+
+.myImage {
+  background: white;
+  /* height: 20rem;
+  width: 20rem; */
+  border-radius: 50%;
+  margin: 2px;
+  grid-column: 1 / 7;
+  grid-row: 1 / 8;
+}
+
+
+/* index page end  */
 
 h1,
 h2,
@@ -193,9 +237,9 @@ form .reset {
   z-index: 10;
 }
 
-.delete-btn{
+.delete-btn {
   text-align: right;
-  margin: 2rem 1.5rem 1.5rem 0 ;
+  margin: 2rem 1.5rem 1.5rem 0;
 }
 
 #login {
