@@ -110,7 +110,9 @@ p#sloganne {
   border-radius: 50%;
   overflow: hidden;
   margin: 2px;
+  margin-bottom: -2rem;
   grid-column: 3 / 7;
+  transform: scale(1.1)
   /* grid-row: 5 / 20; */
 }
 
@@ -136,7 +138,7 @@ p#sloganne {
   color: black;
   width: 100%;
   text-align: start;
-  margin-top: -6rem;
+  margin-top: -5rem;
 }
 .contact p {
   /* line-height: 4rem; */

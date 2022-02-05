@@ -147,10 +147,12 @@
   .myImage {
     background: black;
     height: 11.5rem; 
+    width: 11.5rem;
     border-radius: 50%;
     margin: 2px;
     grid-row: 2 / 20;
     grid-column: 2 / 9;
+    transform: scale(0.8)
   }
   .aboutMe {
     color: black;
@@ -164,8 +166,9 @@
   }
   .contact {
     color: black;
-    grid-row: 11 / 20;
+    grid-row:11 / 20;
     grid-column: 10 / 20;
+    margin: 0;
   }
   .contact p {
     /* line-height: 4rem; */
