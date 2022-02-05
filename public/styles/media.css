@@ -179,3 +179,9 @@
     /* bottom: 0%; */
   }
 }
+
+@media screen and (max-width: 400px) {
+  html{
+    font-size: 9.5px;
+  }
+}
