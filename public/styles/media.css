@@ -187,7 +187,7 @@
   }
   .footer {
     position: relative;
-    top: 55%;
-    /* display: none; */
+    top: 50%;    
+    /* bottom: 0%; */
   }
 }
