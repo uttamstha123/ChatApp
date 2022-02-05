@@ -152,6 +152,7 @@
     margin: 2px;
     grid-row: 2 / 20;
     grid-column: 2 / 9;
+    transform: scale(1);
   }
   .aboutMe {
     color: black;
@@ -175,7 +176,7 @@
   }
   .footer {
     position: relative;
-    top: 50%;    
+    top: 65%;    
     /* bottom: 0%; */
   }
 }
