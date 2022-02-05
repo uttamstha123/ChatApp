@@ -80,4 +80,114 @@
   .registered-msg {
     font-size: 1.4rem;
   }
+
+  /* index page  */
+
+  .indexPage-container {
+    height: 85vh;
+    /* display: grid; */
+    display: flex;
+    flex-direction: column; 
+    
+  }
+  
+  .general-awareness {
+    padding: 3rem 2rem 0 3rem;
+    /* text-align: center; */
+  }
+  .general-awareness p {
+    font-size: 1rem;
+  }
+  
+  .indexPage-container .progsake {
+    /* background: black; */
+    padding: 0rem;
+    border: 2px solid;
+    margin: 2rem 3rem 0 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .progsake .progsakeLogo {
+    background: red;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .progsakeName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    /* padding-bottom: 2rem; */
+  }
+  
+  
+  #rigid p{
+    color: black;
+    text-decoration: underline;
+    font-size: 3.2rem;
+  }
+  p#sloganne{
+    margin-top: -1rem;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  
+  .border {
+    font-size: 1rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .saurabh { 
+  }
+  
+  .uttam {
+    margin-top: -2rem;
+  }
+  .ceo {
+    /* background: black; */
+    /* border-radius: 80rem; */
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+  }
+  
+  .myImage {
+    background: black;
+    height: 11.5rem; 
+    border-radius: 50%;
+    margin: 2px;
+    grid-row: 2 / 20;
+    grid-column: 2 / 9;
+  }
+  .aboutMe {
+    color: black;
+    padding: 1rem 0 0 ;
+    grid-row: 3 / 10;
+    grid-column: 10 / 20;
+  }
+  .aboutMe p {
+    font-size: 1rem;
+    letter-spacing: .2rem;
+  }
+  .contact {
+    color: black;
+    grid-row: 11 / 20;
+    grid-column: 10 / 20;
+  }
+  .contact p {
+    /* line-height: 4rem; */
+    font-size: .85rem;
+  }
+  .footer {
+    position: relative;
+    top: 55%;
+    /* display: none; */
+  }
 }
