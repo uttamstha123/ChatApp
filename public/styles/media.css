@@ -93,7 +93,7 @@
     /* text-align: center; */
   }
   .general-awareness p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   
   .indexPage-container .progsake {
@@ -138,15 +138,16 @@
   .ceo {
     /* background: black; */
     /* border-radius: 80rem; */
-    padding: 1rem;
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: repeat(20, 1fr);
+    align-items: center;
   }
   
   .myImage {
     background: black;
-    height: 11.5rem; 
+    height: 10rem;
+    width: 10rem;
     border-radius: 50%;
     margin: 2px;
     grid-row: 2 / 20;
@@ -159,17 +160,18 @@
     grid-column: 10 / 20;
   }
   .aboutMe p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     letter-spacing: .2rem;
   }
   .contact {
     color: black;
     grid-row: 11 / 20;
     grid-column: 10 / 20;
+    margin-top: -4rem;
   }
   .contact p {
     /* line-height: 4rem; */
-    font-size: .85rem;
+    font-size: 1rem;
   }
   .footer {
     position: relative;
