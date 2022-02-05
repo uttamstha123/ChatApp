@@ -1,13 +1,14 @@
 /**** variables ****/
 :root {
-
   /* --primary-clr: #4bc015; */
-  --primary-clr: #2B9EB3;
+  --primary-clr: #2b9eb3;
   --links-clr: #2b44b3;
   --white-text-100: #fcfcfc;
   --white-text-200: #f4f4f4;
+  --white-text-300: #ede3e4;
   --placeholder-text: #7c7d7c;
   --input-text: #222222;
+  --dark-text-100: #2e2e2e;
   --error-msg: #cf101a;
   --ff-primary: "poppins", sans-serif;
 }
@@ -20,11 +21,11 @@
   font-size: 62.5%;
 }
 
-
 body {
   font-family: var(--ff-primary);
   width: 100%;
   height: 100vh;
+  background: var(--white-text-300);
 }
 
 /* index page */
@@ -32,7 +33,8 @@ body {
   height: 85vh;
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(20, 1fr);
+  /* grid-template-rows: repeat(20, 1fr); */
+  align-items: center;
 }
 
 .general-awareness {
@@ -42,13 +44,13 @@ body {
   /* grid-row: 1 / 7; */
 }
 .general-awareness p {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 
 .indexPage-container .progsake {
   /* background: black; */
   padding: 1.5rem;
-  border: 5px solid;
+  border: 2px solid var(--dark-text-100);
   grid-column: 16 / 20;
   grid-row: 1 / 2;
   margin-top: 2rem;
@@ -56,11 +58,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: .5rem;
+
 }
 .progsake .progsakeLogo {
-  background: red;
-  height: 100%;
-  width: 95%;
+  height: 20rem;
+  width: 20rem;
   border-radius: 50%;
 }
 .progsakeName {
@@ -72,13 +75,11 @@ body {
   /* padding-bottom: 2rem; */
 }
 
-
-#rigid p{
-  color: black;
-  font-size: 6.5rem;
+#rigid p {
+  color: var(--dark-text-100);
+  font-size: 5rem;
 }
-p#sloganne{
-  margin-top: -2rem;
+p#sloganne {
   font-size: 2rem;
 }
 
@@ -89,7 +90,7 @@ p#sloganne{
   font-size: 2rem;
 }
 
-.saurabh { 
+.saurabh {
   grid-column: 5 / 12;
 }
 
@@ -97,38 +98,45 @@ p#sloganne{
   grid-column: 11 / 18;
 }
 .ceo {
-  /* background: black; */
-  /* border-radius: 80rem; */
-  padding: 1rem;
   grid-row: 10 / 18;
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(20, 1fr);
+  /* grid-template-rows: repeat(20, 1fr); */
 }
 
 .myImage {
-  background: black;
-  height: 12rem; 
+  height: 15rem;
+  width: 15rem;
   border-radius: 50%;
+  overflow: hidden;
   margin: 2px;
   grid-column: 3 / 7;
-  grid-row: 5 / 20;
+  /* grid-row: 5 / 20; */
+}
+
+.myImage img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .aboutMe {
   color: black;
   grid-column: 8 / 18;
-  grid-row: 1 / 8;
-  padding: 1rem 0 0 ;
+  /* grid-row: 1 / 8; */
+  padding: 1rem 0 0;
 }
 .aboutMe p {
   font-size: 1.5rem;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   /* line-height: 4.5rem; */
 }
 .contact {
   grid-column: 8 / 18;
-  grid-row: 15 / 20;
+  /* grid-row: 15 / 20; */
   color: black;
+  width: 100%;
+  text-align: start;
+  margin-top: -6rem;
 }
 .contact p {
   /* line-height: 4rem; */
@@ -265,7 +273,7 @@ a {
   padding: 3rem 2rem;
 }
 
-.final-form>*:not(:last-child) {
+.final-form > *:not(:last-child) {
   margin-bottom: 3rem;
 }
 
@@ -310,8 +318,8 @@ form .reset {
   background: var(--white-text-100);
   color: var(--input-text);
   padding: 1rem 4rem;
-  border-radius: .4rem;
-  transition: all .25s;
+  border-radius: 0.4rem;
+  transition: all 0.25s;
 }
 
 #login:hover {
@@ -408,7 +416,6 @@ input:last-child {
   pointer-events: none;
   cursor: pointer;
 }
-
 
 @keyframes Giggle {
   0% {
