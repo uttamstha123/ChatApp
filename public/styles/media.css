@@ -146,12 +146,17 @@
   
   .myImage {
     background: black;
+
     height: 10rem;
     width: 10rem;
+
     border-radius: 50%;
     margin: 2px;
     grid-row: 2 / 20;
     grid-column: 2 / 9;
+
+    transform: scale(1);
+
   }
   .aboutMe {
     color: black;
@@ -165,9 +170,11 @@
   }
   .contact {
     color: black;
-    grid-row: 11 / 20;
+    grid-row:11 / 20;
     grid-column: 10 / 20;
-    margin-top: -4rem;
+
+    margin: 0;
+
   }
   .contact p {
     /* line-height: 4rem; */
@@ -175,7 +182,7 @@
   }
   .footer {
     position: relative;
-    top: 50%;    
+    top: 65%;    
     /* bottom: 0%; */
   }
 }
