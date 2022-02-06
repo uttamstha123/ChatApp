@@ -1,6 +1,6 @@
 /**** variables ****/
 :root {
-  /* --primary-clr: #4bc015; */
+  /* --primary-clr: #5448C8; */
   --primary-clr: #2b9eb3;
   --links-clr: #2b44b3;
   --white-text-100: #fcfcfc;
@@ -58,8 +58,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
-
+  gap: 0.5rem;
 }
 .progsake .progsakeLogo {
   height: 20rem;
@@ -114,7 +113,7 @@ p#sloganne {
   /* grid-row: 5 / 20; */
 }
 
-.myImage img{
+.myImage img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -142,7 +141,10 @@ p#sloganne {
   /* line-height: 4rem; */
   font-size: 1.5rem;
 }
-
+.contact a {
+  color: var(--dark-text-100);
+  text-decoration: underline;
+}
 /* index page end  */
 
 h1,
