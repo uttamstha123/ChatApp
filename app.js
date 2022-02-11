@@ -9,19 +9,14 @@ const UserDetails = require("./model/UserDetails");
 require("dotenv").config();
 
 // router
-// const userDetailsRoute = require('./route/userdetails')
 const signupRoute = require("./route/signup");
 const displayUser = require("./route/marvel");
-
-// const displayPass = require("./route/displayPass");
-
 
 // set static files
 app.use(express.static("./public"));
 app.use(express.static("./Images"));
 
 // making view engine
-// app.set('views', path.join(__dirname,"views"))
 app.set("view engine", "hbs");
 app.engine(
   "hbs",
@@ -38,7 +33,6 @@ app.use(bodyParser.json()); //parsing json
 // routes
 app.use("/signup", signupRoute);
 app.use("/login", displayUser);
-// app.use("/forgetpassword", displayPass);
 
 mongo.connect(process.env.DB_URI, {useNewUrlParser: true}).then(() => {
   console.log("Database connected successfully...");
